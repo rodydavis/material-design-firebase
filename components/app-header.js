@@ -1,10 +1,16 @@
 class AppHeader extends HTMLElement {
     constructor() {
         super();
-        this._title = ""
+        this._title = "";
     }
 
-    static get observedAttributes() { return ["title", "centerTitle"]; }
+    static get observedAttributes() {
+        return [
+            "title",
+            "centerTitle",
+            "leadingIcon",
+        ];
+    }
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name == 'title') this._title = newValue;
@@ -22,19 +28,28 @@ class AppHeader extends HTMLElement {
     }
 
     _updateRendering() {
-        const centerTitle = this.getAttribute("centerTitle") != null;
-        this.innerHTML = `
-        <mwc-top-app-bar ${centerTitle ? 'centerTitle' : ''}>
-        <mwc-icon-button icon="menu" slot="navigationIcon"></mwc-icon-button>
-        <div slot="title">${this.title}</div>
-        <mwc-icon-button
-          id="login-button"
-          icon="person"
-          slot="actionItems"
-        ></mwc-icon-button>
+        var html = [];
+        const centerTitle = this.getAttribute('centerTitle') != null;
+        const leadingIcon = this.getAttribute('leadingIcon');
+        html.push(`<mwc-top-app-bar ${centerTitle ? 'centerTitle' : ''}>`);
+        if (leadingIcon != null) {
+            html.push(`<mwc-icon-button icon="${leadingIcon}" slot="navigationIcon"></mwc-icon-button>`);
+        }
+        if (this.title != null) {
+            html.push(`<div slot="title">${this.title}</div>`);
+        }
+        html.push(`
+            <mwc-icon-button
+            id="login-button"
+            icon="person"
+            slot="actionItems"
+          ></mwc-icon-button>
+          `);
+        html.push(`
         <div><!-- content --></div>
-      </mwc-top-app-bar>
-      `;
+        </mwc-top-app-bar>
+        `);
+        this.innerHTML = html.join("");
     }
 }
 

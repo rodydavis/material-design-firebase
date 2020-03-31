@@ -26,13 +26,19 @@
       content="width=device-width,minimum-scale=1,initial-scale=1"
     />
     <link href="./index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bundle.css" />
   </head>
   <body class="unresolved">
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
 
-    <app-header title="Material Design + Firebase" centerTitle></app-header>
+    <app-header
+      title="Material Design + Firebase"
+      centerTitle
+      leadingIcon="menu"
+    ></app-header>
 
     <main>
       <mwc-fab
@@ -42,7 +48,9 @@
         label="Add Task"
       ></mwc-fab>
 
-      <mwc-dialog id="auth-popup">
+      <mwc-textfield label="My Textfield"></mwc-textfield>
+
+      <mwc-dialog id="auth-dialog">
         <div id="firebaseui-auth-container"></div>
         <mwc-button slot="secondaryAction" dialogAction="cancel">
           Cancel

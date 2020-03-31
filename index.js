@@ -10,7 +10,12 @@ import "@material/mwc-fab";
 import '@material/mwc-dialog';
 import '@material/mwc-radio';
 import '@material/mwc-formfield';
+import '@material/mwc-textfield';
+import '@material/data-table';
 import './components/app-header.js';
+import './components/data-table.js';
+// import { MDCDataTable } from '@material/data-table';
+
 
 const fab = document.querySelector("mwc-fab");
 fab.addEventListener("click", () => {
@@ -26,7 +31,7 @@ loginButton.addEventListener("click", () => {
     // snack.stacked = false;
     // snack.leading = false;
     // snack.open();
-    var dialog = document.body.querySelector('#auth-popup');
+    var dialog = document.body.querySelector('#auth-dialog');
     dialog.open = true;
 });
 
