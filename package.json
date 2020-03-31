@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --host 0.0.0.0 --disable-host-check --public $PROJECT_DOMAIN.glitch.me",
     "dll": "webpack --config webpack.dll.config.js",
     "dev": "npx es-dev-server --node-resolve --watch --open",
-    "deploy": "firebase deploy --only hosting",
+    "deploy": "rollup -c && firebase deploy --only hosting",
     "build": "rollup -c"
   },
   "devDependencies": {
