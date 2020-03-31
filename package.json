@@ -13,12 +13,14 @@
   "private": true,
   "dependencies": {
     "@angular-devkit/schematics": "^9.1.0",
+    "@angular/animations": "9.1.0",
+    "@angular/cdk": "^9.2.0",
     "@angular/cli": "^9.1.0",
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
     "@angular/core": "^2.3.1",
+    "@angular/fire": "^6.0.0-rc.2",
     "@angular/forms": "^2.3.1",
-    "@angular/http": "^2.3.1",
     "@angular/material": "^9.2.0",
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
@@ -26,14 +28,16 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.7.2"
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.0",
     "@angular/compiler-cli": "^2.3.1",
     "@types/jasmine": "2.5.38",
-    "@types/node": "^6.0.42",
+    "@types/node": "^12.11.1",
     "angular-cli": "1.0.0-beta.28.3",
-    "codelyzer": "~2.0.0-beta.1",
+    "codelyzer": "^5.1.2",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
@@ -44,6 +48,11 @@
     "protractor": "~4.0.13",
     "ts-node": "1.2.1",
     "tslint": "^4.3.0",
-    "typescript": "~2.0.3"
+    "typescript": "~2.0.3",
+    "@angular-devkit/architect": "~0.900",
+    "firebase-tools": "^7.12.1",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1"
   }
 }

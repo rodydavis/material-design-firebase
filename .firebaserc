@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "fluid-calendar-44ed0"
+  },
+  "targets": {
+    "fluid-calendar-44ed0": {
+      "hosting": {
+        "todo-app": [
+          "fluid-calendar-44ed0"
+        ]
+      }
+    }
   }
 }
