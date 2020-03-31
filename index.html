@@ -1,65 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add support for Web Components to older browsers. -->
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script
+      type="module"
+      src="../node_modules/@material/mwc-fab/mwc-fab.js"
+    ></script>
+    <script
+      type="module"
+      src="../node_modules/@material/mwc-icon/mwc-icon.js"
+    ></script>
+    <script
+      type="module"
+      src="../node_modules/@material/mwc-snackbar/mwc-snackbar.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css"
+    />
     <title>Material Design + Firebase</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="https://cdn.glitch.com/9c389208-b279-4e96-bcbc-e5f8712d8706%2Ftheme-builder-meta%20copy.png?1555366209261">
-    <!-- import Material Icons from Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:900i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <!-- import the Material stylesheet -->
-    <link rel="stylesheet" href="bundle.css">
-    <!-- Add favicons -->
-   <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.glitch.com/9c389208-b279-4e96-bcbc-e5f8712d8706%2Ffavicon-32x32.png?1553712190412">
-   <link rel="icon" type="image/png" sizes="96x96" href="https://cdn.glitch.com/9c389208-b279-4e96-bcbc-e5f8712d8706%2Ffavicon-96x96.png?1553712190613">
-   <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.glitch.com/9c389208-b279-4e96-bcbc-e5f8712d8706%2Ffavicon-16x16.png?1553712190383">
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+    <link href="index.css" rel="stylesheet" />
   </head>
-  <body class="mdc-typography">
-    <div class="mdc-drawer-scrim"></div>
-    <div class="mdc-drawer-app-content">
-      <header class="theme-builder-app-bar mdc-top-app-bar">
-        <div class="mdc-top-app-bar__row">
-          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <span class="mdc-top-app-bar__title">
-              <h1 class="theme-builder-title mdc-typography--headline5">
-                <svg width="24px" height="24px" viewbox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g transform="translate(-29.000000, -48.000000)">
-                      <g>
-                        <g transform="translate(0.000000, 44.000000)">
-                          <g transform="translate(29.000000, 0.000000)">
-                            <g transform="translate(0.000000, 4.000000)">
-                              <mask fill="white">
-                                <use xlink:href="#mdc-logo-path"></use>
-                              </mask>
-                              <use fill="#5F6367" fill-rule="nonzero" xlink:href="#mdc-logo-path"></use>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-                Material Design + Firebase
-              </h1>
-            </span>
-          </section>
-        </div>
-      </header>
+  <body class="unresolved">
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
 
-      <main class="main-content mdc-top-app-bar--fixed-adjust">
-        <button onclick=" window.open('https://glitch.com/~overjoyed-lowly-locust','_blank')" class="mdc-fab mdc-fab--extended remix-fab" >
-                <span class="material-icons mdc-fab__icon">add</span>
-                <span class="mdc-fab__label">New Task</span>
-        </button>
-        
+    <script src="firebase-config.js"></script>
 
-      </main>
-    </div>
-    <!-- import the Material javascript file -->
-    <script src="components.dll.js"></script>
-    <script src="bundle.js"></script>
+    <mwc-top-app-bar centerTitle>
+      <mwc-icon-button icon="menu" slot="navigationIcon"></mwc-icon-button>
+      <div slot="title">Material Design + Firebase</div>
+      <mwc-icon-button
+        id="login-button"
+        icon="person"
+        slot="actionItems"
+      ></mwc-icon-button>
+      <div><!-- content --></div>
+    </mwc-top-app-bar>
+
+    <main>
+      <mwc-fab
+        class="redAndWhite"
+        extended
+        icon="add"
+        label="Add Task"
+      ></mwc-fab>
+
+      <mwc-dialog id="auth-popup">
+        <div id="firebaseui-auth-container"></div>
+        <mwc-button slot="secondaryAction" dialogAction="cancel">
+          Cancel
+        </mwc-button>
+      </mwc-dialog>
+      <!-- <mwc-snackbar
+        id="snack"
+        labelText="Can't send photo. Retry in 5 seconds."
+      >
+        <mwc-button id="actionButton" slot="action">OK</mwc-button>
+        <mwc-icon-button
+          id="iconButton"
+          icon="close"
+          slot="dismiss"
+        ></mwc-icon-button>
+      </mwc-snackbar> -->
+    </main>
+
+    <script type="module" src="index.js"></script>
   </body>
 </html>
