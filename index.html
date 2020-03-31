@@ -4,19 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Add support for Web Components to older browsers. -->
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script
-      type="module"
-      src="../node_modules/@material/mwc-fab/mwc-fab.js"
-    ></script>
-    <script
-      type="module"
-      src="../node_modules/@material/mwc-icon/mwc-icon.js"
-    ></script>
-    <script
-      type="module"
-      src="../node_modules/@material/mwc-snackbar/mwc-snackbar.js"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.4.3/webcomponents-loader.js"></script>
+
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
       rel="stylesheet"
@@ -36,14 +25,12 @@
       name="viewport"
       content="width=device-width,minimum-scale=1,initial-scale=1"
     />
-    <link href="index.css" rel="stylesheet" />
+    <link href="./index.css" rel="stylesheet" />
   </head>
   <body class="unresolved">
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
-
-    <script src="firebase-config.js"></script>
 
     <mwc-top-app-bar centerTitle>
       <mwc-icon-button icon="menu" slot="navigationIcon"></mwc-icon-button>
@@ -70,19 +57,8 @@
           Cancel
         </mwc-button>
       </mwc-dialog>
-      <!-- <mwc-snackbar
-        id="snack"
-        labelText="Can't send photo. Retry in 5 seconds."
-      >
-        <mwc-button id="actionButton" slot="action">OK</mwc-button>
-        <mwc-icon-button
-          id="iconButton"
-          icon="close"
-          slot="dismiss"
-        ></mwc-icon-button>
-      </mwc-snackbar> -->
     </main>
 
-    <script type="module" src="index.js"></script>
+    <script type="module" src="./output/index.js"></script>
   </body>
 </html>

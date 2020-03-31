@@ -6,9 +6,12 @@
     "//": "If you are building your app locally, in the following line remove everything after webpack-dev-server",
     "start": "webpack-dev-server --host 0.0.0.0 --disable-host-check --public $PROJECT_DOMAIN.glitch.me",
     "dll": "webpack --config webpack.dll.config.js",
-    "dev": "es-dev-server --node-resolve"
+    "dev": "npx es-dev-server --node-resolve --watch --open",
+    "deploy": "firebase deploy --only hosting",
+    "build": "rollup -c"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-assign": "^6.22.0",
