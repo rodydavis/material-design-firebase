@@ -10,6 +10,7 @@ import "@material/mwc-fab";
 import '@material/mwc-dialog';
 import '@material/mwc-radio';
 import '@material/mwc-formfield';
+import './components/app-header.js';
 
 const fab = document.querySelector("mwc-fab");
 fab.addEventListener("click", () => {
